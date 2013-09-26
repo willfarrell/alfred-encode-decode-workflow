@@ -1,7 +1,7 @@
 Encode / Decode ([Download v1.2](https://raw.github.com/willfarrell/alfred-encode-decode-workflow/master/encode-decode.alfredworkflow))
 =====================
 
-Encoding and decoding a sting into multiple variations.
+Encoding and decoding a string into multiple variations.
 
 ## Requirements
 1. [Alfred App v2](http://www.alfredapp.com/#download)
