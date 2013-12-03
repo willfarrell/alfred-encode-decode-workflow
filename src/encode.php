@@ -3,12 +3,29 @@
 //header ("Content-Type:text/xml");
 //syslog(LOG_ERR, "message to send to log");
 
+// alfred encode.php test\"\'<é
+
 // ****************
 
 require_once('workflows.php');
 
 $w = new Workflows();
-if (!isset($query)) { $query = "{query}"; }
+if (!isset($query)) {
+	$query = <<<EOD
+{query}
+EOD;
+}
+
+if (1) {
+	echo "".$query."\n";
+	echo "urlencode = ".urlencode($query)."\n";
+	echo "utf8_encode = ".utf8_encode($query)."\n";
+	echo "htmlentities = ".htmlentities($query, ENT_QUOTES, 'UTF-8')."\n";
+	echo "base64_encode = ".base64_encode($query)."\n";
+	
+	exit();
+}
+
 
 $encodes = array();
 // url
@@ -22,6 +39,7 @@ if ($utf8_encode != $query) $encodes["UTF8 Encoded"] = $utf8_encode;
 // HTML
 $html_encode = htmlentities($query, ENT_QUOTES, 'UTF-8');
 if ($html_encode != $query) $encodes["HTML Encoded"] = $html_encode;
+
 //$dencodes["UTF-8 encoded"] = utf8_encode($query);
 
 // base64

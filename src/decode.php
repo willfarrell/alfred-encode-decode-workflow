@@ -3,13 +3,17 @@
 //header ("Content-Type:text/xml");
 //syslog(LOG_ERR, "message to send to log");
 
-$query = "%5D & > \u0058"; // URL, 
+//$query = "%5D & > \u0058"; // URL, 
 // ****************
 
 require_once('workflows.php');
 
 $w = new Workflows();
-if (!isset($query)) { $query = "{query}"; }
+if (!isset($query)) {
+	$query = <<<EOD
+{query}
+EOD;
+}
 
 function replace_unicode_escape_sequence($match) {
     return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
