@@ -23,6 +23,17 @@ function html_decode($str) {
 	return str_replace(array("&lt;", "&gt;", '&amp;', '&#039;', '&quot;','&lt;', '&gt;'), array("<", ">",'&','\'','"','<','>'), htmlspecialchars_decode($str, ENT_NOQUOTES));
 }
 
+if (0) {
+	echo "".$query."\n";
+	echo "urlencode = ".urldecode($query)."\n";
+	echo "utf8_encode = ".utf8_decode($query)."\n";
+	echo "unicode = ".preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'replace_unicode_escape_sequence', $query)."\n";
+	echo "htmlentities = ".html_entity_decode($query)."\n";
+	echo "base64_encode = ".base64_decode($query)."\n";
+	
+	exit();
+}
+
 $decodes = array();
 // url
 $url_decode = urldecode($query);
@@ -41,8 +52,9 @@ $html_decode = html_entity_decode($query);
 if ($html_decode != $query) $decodes["HTML Decoded"] = $html_decode;
 
 // base64
-$base64_decode = base64_decode($query);
-if ($base64_decode != $query) $decodes["base64 Decoded"] = $base64_decode;
+$base64_decode = base64_decode($query, true);
+if (!$base64_decode) { $decodes["base64 Decoded"] = "Failed to decode. Output contains character from outside the base64 alphabet."; }
+else if ($base64_decode != $query) { $decodes["base64 Decoded"] = $base64_decode; }
 
 //$dencodes["UTF-8 Decoded"] = utf8_decode($query);
 
