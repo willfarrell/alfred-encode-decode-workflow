@@ -66,7 +66,7 @@ $unicode_decode = preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'replace_unicod
 if ($unicode_decode != $query) $decodes["Unicode Decoded"] = $unicode_decode;
 
 // HTML
-$html_decode = html_entity_decode($query);
+$html_decode = html_entity_decode($query, ENT_QUOTES, 'UTF-8');
 if ($html_decode != $query) $decodes["HTML Decoded"] = $html_decode;
 
 // base64

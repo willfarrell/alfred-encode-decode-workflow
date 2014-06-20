@@ -84,7 +84,7 @@ for ($i = 0, $l = sizeof($chars); $i < $l; $i++) {
 	$html_encode .= $table[$chars[$i]] ? $table[$chars[$i]] : $chars[$i];
 }
 $html_encode = htmlentities($html_encode, ENT_QUOTES, 'UTF-8', false);*/
-$html_encode = htmlentities($query, ENT_QUOTES, 'UTF-8', false);
+$html_encode = htmlentities($query, ENT_QUOTES, 'UTF-8');
 if ($html_encode != $query) $encodes["HTML Encoded"] = $html_encode;
 
 // base64
