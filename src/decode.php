@@ -57,10 +57,6 @@ $decodes = array();
 $url_decode = urldecode($query);
 if ($url_decode != $query) $decodes["URL Decoded"] = $url_decode;
 
-// utf-8
-$utf8_decode = utf8_decode($query);
-if ($utf8_decode != $query) $decodes["UTF8 Decoded"] = $utf8_decode;
-
 // unicode
 $unicode_decode = preg_replace_callback('/\\\\u([0-9a-f]{4})/i', 'replace_unicode_escape_sequence', $query);
 if ($unicode_decode != $query) $decodes["Unicode Decoded"] = $unicode_decode;

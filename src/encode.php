@@ -73,10 +73,6 @@ $encodes = array();
 $url_encode = urlencode($query);
 if ($url_encode != $query) $encodes["URL Encoded"] = $url_encode;
 
-// utf8
-$utf8_encode = utf8_encode($query);
-if ($utf8_encode != $query) $encodes["UTF8 Encoded"] = $utf8_encode;
-
 // HTML
 /*$html_encode = '';
 $table = get_html_translation_table(HTML_ENTITIES);
