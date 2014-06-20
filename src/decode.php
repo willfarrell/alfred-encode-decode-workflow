@@ -71,7 +71,7 @@ if ($html_decode != $query) $decodes["HTML Decoded"] = $html_decode;
 
 // base64
 $base64_decode = base64_decode($query, true);
-if (!$base64_decode && $base64_decode != $query) { $decodes["base64 Decoded"] = $base64_decode; }
+if ($base64_decode && $base64_decode != $query) { $decodes["base64 Decoded"] = $base64_decode; }
 
 //$dencodes["UTF-8 Decoded"] = utf8_decode($query);
 
