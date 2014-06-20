@@ -23,10 +23,29 @@ require_once('workflows.php');
 
 $w = new Workflows();
 if (!isset($query)) {
-	$query = <<<EOD
-{query}
-EOD;
+	$query = $argv[1];
 }
+
+function force_utf8_safe($str) {
+	$res = mb_convert_encoding($str, "UTF-8", "UTF-8" ); // replace invalid characters with ?
+	$res = preg_replace('/\p{Cc}+/u', '?', $res); // replace control characters with ?
+	return $res;
+}
+
+function prepare_output($items) {
+	$res = [];
+	foreach ($items as $key => $value) {
+		// Make UTF-8 safe results.
+		$safe_value = force_utf8_safe($value);
+		if ($value != $safe_value) {
+			$key .= ' (Invalid characters replaced with ?)';
+			$value = $safe_value;
+		}
+		$res[$key] = $value;
+	}
+	return $res;
+}
+
 $chars = str_split_unicode($query);
 
 if (0) {
@@ -71,6 +90,9 @@ if ($html_encode != $query) $encodes["HTML Encoded"] = $html_encode;
 // base64
 $base64_encode = base64_encode($query);
 if ($base64_encode != $query) $encodes["base64 Encoded"] = $base64_encode;
+
+
+$encodes = prepare_output($encodes);
 
 foreach($encodes as $key => $value) {
 	$w->result( $key, $value, $value, $key, 'icon.png', 'yes' );
