@@ -82,7 +82,7 @@ foreach($decodes as $key => $value) {
 }
 
 if ( count( $w->results() ) == 0 ) {
-	$w->result( 'decode', $query, 'Nothing useful resulted', 'The decoded strings were the same as your query', 'terminal.png', 'yes' );
+	$w->result( 'decode', $query, 'Nothing useful resulted', 'The decoded strings were the same as your query', 'icon.png', 'yes' );
 }
 
 echo $w->toxml();

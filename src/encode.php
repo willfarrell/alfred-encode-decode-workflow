@@ -99,7 +99,7 @@ foreach($encodes as $key => $value) {
 }
 
 if ( count( $w->results() ) == 0 ) {
-	$w->result( 'encode', $query, 'Nothing useful resulted', 'The encoded strings were the same as your query', 'terminal.png', 'yes' );
+	$w->result( 'encode', $query, 'Nothing useful resulted', 'The encoded strings were the same as your query', 'icon.png', 'yes' );
 }
 
 echo $w->toxml();
