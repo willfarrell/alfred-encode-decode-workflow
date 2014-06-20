@@ -1,5 +1,5 @@
 {
-	"version": 1.7,
+	"version": 1.8,
 	"download_url": "https://raw.github.com/willfarrell/alfred-encode-decode-workflow/master/encode-decode.alfredworkflow",
     "description": "Encode/Decode Strings"
 }
