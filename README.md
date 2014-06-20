@@ -28,6 +28,7 @@ Will transform your query strings through *base64*, *html*, *url*, and *utf-8* e
 
 ## Contributors
 - [@willfarrell](https://github.com/willfarrell)
+- [@cvn](https://github.com/cvn)
 
 [encode]: ./screenshots/encode.png "Encode"
 [decode]: ./screenshots/decode.png "Decode"
