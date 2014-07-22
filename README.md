@@ -30,5 +30,9 @@ Will transform your query strings through *base64*, *html*, *url*, and *utf-8* e
 - [@willfarrell](https://github.com/willfarrell)
 - [@cvn](https://github.com/cvn)
 
+## Mentions
+- [15 Alfred Workflows to Turbocharge Productivity](http://www.bachyaproductions.com/15-alfred-workflows-turbocharge-productivity/)
+
+
 [encode]: ./screenshots/encode.png "Encode"
 [decode]: ./screenshots/decode.png "Decode"
