@@ -19,6 +19,12 @@ function str_split_unicode($str, $l = 0) {
     return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }
 
+function urlsafe_b64encode($string) {
+    $data = base64_encode($string);
+    $data = str_replace(array('+','/','='),array('-','_',''),$data);
+    return $data;
+}
+
 require_once('workflows.php');
 
 $w = new Workflows();
@@ -62,7 +68,7 @@ if (0) {
 	$html_encode = htmlentities($html_encode, ENT_QUOTES, 'UTF-8', false);
 	echo " = ".$html_encode."\n";
 	echo "base64_encode = ".base64_encode($query)."\n";
-	
+
 	exit();
 }
 
@@ -87,6 +93,9 @@ if ($html_encode != $query) $encodes["HTML Encoded"] = $html_encode;
 $base64_encode = base64_encode($query);
 if ($base64_encode != $query) $encodes["base64 Encoded"] = $base64_encode;
 
+// base64 with urlsafe
+$urlsafe_base64_encode = urlsafe_b64encode($query);
+if ($urlsafe_base64_encode != $query) $encodes["base64(urlsafe) Encoded"] = $urlsafe_base64_encode;
 
 $encodes = prepare_output($encodes);
 
