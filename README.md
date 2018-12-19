@@ -1,4 +1,4 @@
-Encode / Decode ([Download v1.8](https://raw.github.com/willfarrell/alfred-encode-decode-workflow/master/encode-decode.alfredworkflow))
+Encode / Decode ([Download v1.9](https://raw.github.com/willfarrell/alfred-encode-decode-workflow/master/encode-decode.alfredworkflow))
 =====================
 
 Encoding and decoding a string into multiple variations.
