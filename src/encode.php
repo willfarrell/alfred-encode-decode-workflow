@@ -4,6 +4,7 @@
 //syslog(LOG_ERR, "message to send to log");
 
 // alfred encode.php test\"\'<é
+//$query = '{"foo": 1, "bar": 2}';
 
 // ****************
 
@@ -29,7 +30,7 @@ require_once('workflows.php');
 
 $w = new Workflows();
 if (!isset($query)) {
-	$query = $argv[1];
+	$query = join(' ', array_slice($argv, 1));
 }
 
 function force_utf8_safe($str) {
@@ -55,7 +56,7 @@ function prepare_output($items) {
 $chars = str_split_unicode($query);
 
 if (0) {
-	echo "".$query." - ".implode("", $chars)."\n";
+	echo "".$query." == ".implode("", $chars)."\n";
 	echo "urlencode = ".urlencode($query)."\n";
 	echo "utf8_encode = ".utf8_encode($query)."\n";
 	echo "htmlentities = ".htmlentities($query, ENT_QUOTES, 'UTF-8', false)."\n";
@@ -68,7 +69,7 @@ if (0) {
 	$html_encode = htmlentities($html_encode, ENT_QUOTES, 'UTF-8', false);
 	echo " = ".$html_encode."\n";
 	echo "base64_encode = ".base64_encode($query)."\n";
-
+	echo "urlsafe_base64_encode = ".urlsafe_b64encode($query)."\n";
 	exit();
 }
 
