@@ -26,6 +26,10 @@ function urlsafe_b64encode($string) {
     return $data;
 }
 
+function replace_unicode_escape_sequence($match) {
+	return '\u' . (String) bin2hex(iconv('UTF-8', 'UCS-2', $match[0]));
+}
+
 require_once('workflows.php');
 
 $w = new Workflows();
@@ -59,6 +63,7 @@ if (0) {
 	echo "".$query." == ".implode("", $chars)."\n";
 	echo "urlencode = ".urlencode($query)."\n";
 	echo "utf8_encode = ".utf8_encode($query)."\n";
+	echo "unicode = ".preg_replace_callback('/[\x{4e00}-\x{9fa5}]/iu', 'replace_unicode_escape_sequence', $query)."\n";
 	echo "htmlentities = ".htmlentities($query, ENT_QUOTES, 'UTF-8', false)."\n";
 	$html_encode = '';
 	$table = get_html_translation_table(HTML_ENTITIES);
@@ -89,6 +94,10 @@ for ($i = 0, $l = sizeof($chars); $i < $l; $i++) {
 $html_encode = htmlentities($html_encode, ENT_QUOTES, 'UTF-8', false);*/
 $html_encode = htmlentities($query, ENT_QUOTES, 'UTF-8');
 if ($html_encode != $query) $encodes["HTML Encoded"] = $html_encode;
+
+// unicode
+$unicode_encode = preg_replace_callback('/[\x{4e00}-\x{9fa5}]/iu', 'replace_unicode_escape_sequence', $query);
+if ($unicode_encode != $query) $encodes["Unicode Encoded"] = $unicode_encode;
 
 // base64
 $base64_encode = base64_encode($query);
