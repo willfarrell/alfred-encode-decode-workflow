@@ -194,7 +194,9 @@ class Workflows {
 						$c->addAttribute( 'valid', $b[$key] );
 					endif;
 				elseif ( $key == 'autocomplete' ):
-					$c->addAttribute( 'autocomplete', $b[$key] );
+					if ($b[$key]):
+						$c->addAttribute( 'autocomplete', $b[$key] );
+					endif;
 				elseif ( $key == 'icon' ):
 					if ( substr( $b[$key], 0, 9 ) == 'fileicon:' ):
 						$val = substr( $b[$key], 9 );
