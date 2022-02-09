@@ -25,7 +25,7 @@ To Solve this issue, follow these steps:
 brew install php
 ```
 
-3. Head to setting page of this Alfred workflow, double-click on encode / decode block, and change `php` to `/usr/local/bin/php`.
+3. Head to setting page of this Alfred workflow, double-click on encode / decode block, and change `php` to `/usr/local/bin/php`, or `/opt/homebrew/bin/php`(if install php by Homebrew).
 
 ## Updating
 Run the [Alleyoop Workflow](http://www.alfredforum.com/topic/1582-alleyoop-update-alfred-workflows/) using the keyword `oop`. If you're not comfortable with Alleyoop, **star & watch this repo** to keep up to date on new versions and additional workflows.
