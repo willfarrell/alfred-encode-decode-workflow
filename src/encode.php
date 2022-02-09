@@ -82,7 +82,7 @@ if (0) {
 $encodes = array();
 
 // url
-$url_encode = urlencode($query);
+$url_encode = urlencode(stripslashes($query));
 if ($url_encode != $query) $encodes["URL Encoded"] = $url_encode;
 
 // HTML
