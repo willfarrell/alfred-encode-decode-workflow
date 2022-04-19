@@ -22,8 +22,14 @@ To Solve this issue, follow these steps:
 2. Install PHP runtime with Homebrew
 
 ```shell
-brew install php
+brew install php@7.4
 ```
+ Note: If you've installed php with homebrew previously, you also need to
+ 
+ ```shell
+ brew unlink php
+ brew link php@7.4
+ ```
 
 3. Head to setting page of this Alfred workflow, double-click on encode / decode block, and change `php` to `/usr/local/bin/php`.
 
