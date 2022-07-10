@@ -184,17 +184,25 @@ class Workflows {
 			$c_keys = array_keys( $b );						// Grab all the keys for that item
 			foreach( $c_keys as $key ):						// For each of those keys
 				if ( $key == 'uid' ):
-					$c->addAttribute( 'uid', $b[$key] );
+					if ( !is_null($b[$key]) ):
+						$c->addAttribute( 'uid', $b[$key] );
+					endif;
 				elseif ( $key == 'arg' ):
-					$c->addAttribute( 'arg', $b[$key] );
+					if ( !is_null($b[$key]) ):
+						$c->addAttribute( 'arg', $b[$key] );
+					endif;
 				elseif ( $key == 'type' ):
-					$c->addAttribute( 'type', $b[$key] );
+					if ( !is_null($b[$key]) ):
+						$c->addAttribute( 'type', $b[$key] );
+					endif;
 				elseif ( $key == 'valid' ):
 					if ( $b[$key] == 'yes' || $b[$key] == 'no' ):
 						$c->addAttribute( 'valid', $b[$key] );
 					endif;
 				elseif ( $key == 'autocomplete' ):
-					$c->addAttribute( 'autocomplete', $b[$key] );
+					if ( !is_null($b[$key]) ):
+						$c->addAttribute( 'autocomplete', $b[$key] );
+					endif;
 				elseif ( $key == 'icon' ):
 					if ( substr( $b[$key], 0, 9 ) == 'fileicon:' ):
 						$val = substr( $b[$key], 9 );
